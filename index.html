@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychosocial Changes in Pregnancy - HGAL Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* CORE RESET & VARIABLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-dark: #121212;
+            --bg-gradient-start: #1a1a1a;
+            --bg-gradient-end: #0a0a0a;
+            --text-primary: #e0e0e0;
+            --text-accent: #64ffda; /* Soft Cyan for emphasis */
+            --text-highlight: #ffd700; /* Gold for important terms */
+            --font-main: 'Merriweather', serif;
+            --font-ui: 'Open Sans', sans-serif;
+            --spacing-unit: 1.8rem;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 26px; /* Requested size */
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* SCROLL PROGRESS BAR */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--text-accent);
+            width: 0%;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px var(--text-accent);
+        }
+
+        /* LAYOUT CONTAINER */
+        .container {
+            max-width: 800px; /* Limits width for readability (WhatsApp feel) */
+            margin: 0 auto;
+            padding: 40px 20px 100px 20px;
+        }
+
+        /* LOGO STYLING */
+        .header-logo {
+            display: block;
+            margin: 0 auto 60px auto;
+            width: 100%;
+            max-width: 500px; /* Keeps it contained but large */
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* TYPOGRAPHY STYLING */
+        h1, h2, h3 {
+            color: var(--text-primary);
+            font-weight: 900;
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 1.8em; text-align: center; color: var(--text-accent); }
+        h2 { font-size: 1.4em; border-left: 5px solid var(--text-accent); padding-left: 15px; }
+        
+        p {
+            margin-bottom: var(--spacing-unit);
+            color: #cccccc;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .highlight {
+            color: var(--text-accent);
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #ff6b6b; /* Soft red for warnings */
+        }
+
+        .term {
+            color: var(--text-highlight);
+            font-style: italic;
+        }
+
+        /* SCROLL ANIMATION (REVEAL) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* LIST STYLING (To look like chat bubbles/points) */
+        ul {
+            list-style: none;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li::before {
+            content: '➤';
+            position: absolute;
+            left: 0;
+            color: var(--text-accent);
+        }
+
+        /* VIP SECTION STYLING */
+        .vip-notice {
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .vip-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 20px 40px;
+            background-color: var(--text-accent);
+            color: #000;
+            font-family: var(--font-ui);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.4);
+            animation: pulse 2s infinite;
+            transition: transform 0.2s;
+        }
+
+        .vip-btn:hover {
+            transform: scale(1.05);
+            background-color: #ffffff;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(100, 255, 218, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 600px) {
+            body { font-size: 20px; } /* Slightly smaller for small screens, but still big */
+            .container { padding: 20px 15px; }
+            h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SCROLL PROGRESS INDICATOR -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="container">
+        
+        <!-- LOGO -->
+        <img src="https://i.imgur.com/eP0BFrd.png" alt="HGAL Academy Logo" class="header-logo">
+
+        <!-- CONTENT START -->
+        <div class="reveal">
+            <h1>Psychosocial Changes in Pregnancy</h1>
+            <p>Hello there! 👋 Welcome to today's session. I’m so glad you’re here.</p>
+            <p>Today, we are going to explore a really fascinating journey—<strong>Pregnancy</strong>. 🤰</p>
+            <p>Now, usually, when we think of pregnancy, we think about the belly getting bigger, right? But today, I want you to put on your "Psychologist Hat" 🎩 because we are going to talk about what happens inside the <em>mind</em> and the <em>heart</em> of the family during this time.</p>
+        </div>
+
+        <div class="reveal">
+            <p>Think of pregnancy like a <strong>"Level Up"</strong> stage in a video game. 🎮 It’s a distinct developmental stage with its own tasks.</p>
+            <p>For a couple (the mom and dad), this time can be a moment of huge support ❤️... OR it can be a time of conflict ⚔️. It all depends on how much they are willing to adjust to keep the family balanced.</p>
+            <p>We actually call pregnancy a <span class="term">"Maturational Crisis."</span></p>
+            <p>Wait, crisis? 😨 Don't worry, that just means it's a major turning point in life. It's a normal part of growing up! But, if this crisis isn't handled well, it can lead to bad behavior or even the family breaking apart. So, getting this right is super important!</p>
+        </div>
+
+        <div class="reveal">
+            <p>Okay, let's break this down person by person. First up...</p>
+            <h2>The Mother 👩</h2>
+            <p>Pregnancy changes how a mom sees her own body (body image) and changes her relationships with everyone around her.</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>1️⃣ First Trimester (The Beginning)</strong></p>
+            <p>At the very start, the mom often feels <strong>disbelief</strong>. She might think, <em>"Is this really happening?"</em> 🤔</p>
+            <p>She often feels <span class="term">ambivalence</span>. That’s a big word that means having mixed feelings—like being happy and scared at the exact same time.</p>
+            <p>Right now, she is focusing mostly on herself. Why? Because she feels yucky! 🤢 Symptoms like breast tenderness and morning sickness are unpleasant. She might become quiet and thoughtful (introspective) and have mood swings—going from "Yay!" to "Oh no..." very quickly.</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>2️⃣ Second Trimester (The Middle)</strong></p>
+            <p>This is often the best part! 🎉</p>
+            <p>Something magical happens called <span class="highlight">Quickening</span>. This is when she feels the baby move for the first time. 🦶 This helps her realize, <em>"Oh wow, this is a separate little person inside me!"</em></p>
+            <p>She starts evaluating her life and planning the child's future. However, sometimes her partner might pull away a little, which can make her sad. But as her belly grows and people notice, she might feel proud... or shy. Generally, though, this is a calm, peaceful time.</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>3️⃣ Third Trimester (The End Stretch)</strong></p>
+            <p>Now, she feels proud but also anxious about the birth (labour). 🏥</p>
+            <p>Her body is getting heavy and uncomfortable, and honestly? She is just eager for it to be over! She gets tired easily (fatigue) 😴 and might not be interested in romance.</p>
+            <p>But then—surprise!—she gets a sudden burst of energy to clean and organize. We call this <strong>"Nesting"</strong> 🐦, preparing the home for the baby.</p>
+        </div>
+
+        <div class="reveal">
+            <p>Okay, let’s now move on to someone who often gets forgotten in the story...</p>
+            <h2>The Father 👨</h2>
+            <p>Believe it or not, pregnancy is stressful for dads too! Usually, their anxiety comes from <strong>not being prepared</strong>. We can fix this by including them in classes and education! 📚</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>1️⃣ First Trimester</strong></p>
+            <p>At first—Excitement! 🎉 "I'm going to be a dad!"</p>
+            <p>But then... he might feel left out. The mom is getting all the attention. He might be confused by her mood swings ("Why is she crying over a commercial?"). He might even resent that she is too tired for fun or romance. 😔</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>2️⃣ Second Trimester</strong></p>
+            <p>For a while, the pregnancy still feels vague to him. It's not happening in <em>his</em> body.</p>
+            <p>But, when he sees the baby move or hears the heartbeat ❤️🔊, he gets more involved! This is a time where he has to think about his own father. He needs to resolve conflicts about how he was raised so he can figure out what kind of dad <em>he</em> wants to be.</p>
+        </div>
+
+        <div class="reveal">
+            <p><strong>3️⃣ Third Trimester</strong></p>
+            <p>Fear comes back. 😨 He might worry, <em>"Will I hurt the baby if we hug too close?"</em> (He won't, but he worries!). He worries about the birth and wonders if he will be a good parent.</p>
+        </div>
+
+        <div class="reveal">
+            <p>Let’s now dive into what happens with the other kids in the house...</p>
+            <h2>The Siblings 👦👧</h2>
+            <p>Bringing a new baby home is the start of <strong>Sibling Rivalry</strong>. 🤼</p>
+            <p>Think about it: The older kid thinks the baby is a threat! <em>"Are mom and dad going to love the baby more than me?"</em></p>
+            <p>We can fix this with constructive action. Most importantly, parents need to be <strong>consistent</strong> when dealing with young children so they feel secure.</p>
+        </div>
+
+        <div class="reveal">
+            <p>Now that we understand the people, let's talk about the mental "To-Do List" for the mom. A researcher named <strong>Rubin</strong> came up with this.</p>
+            <h2>Psychological Tasks in Pregnancy (Rubin's 4 Tasks) 🧠</h2>
+            
+            <p><strong>1. Ensuring Safe Passage 🛡️</strong></p>
+            <p>The mom wants to make sure she and the baby survive pregnancy and birth. She looks for a good doctor/midwife to feel in control. She reads books 📖 and talks to other moms to learn everything she can.</p>
+
+            <p><strong>2. Seeking Acceptance 🤝</strong></p>
+            <p>She slowly changes her social group to fit her pregnancy. She works hard to make sure the siblings and the family accept the new baby.</p>
+
+            <p><strong>3. Binding-In (Seeking Commitment) 💞</strong></p>
+            <p>This is the emotional attachment. She starts to accept <em>herself</em> as a mother to this specific infant. It feels real and satisfying.</p>
+
+            <p><strong>4. Learning to Give of Oneself 🎁</strong></p>
+            <p>This is the hardest one! She learns to delay what <em>she</em> wants (like sleep or freedom) to meet the needs of the baby. It's the beginning of sacrifice.</p>
+        </div>
+
+        <div class="reveal">
+            <p>Next, we’ll look at the physical side. We call these <strong>"Minor Disorders,"</strong> which is just a fancy way of saying "annoying body changes." 🤕</p>
+            <p>These happen because hormones (chemical messengers) are going wild and the body is stretching.</p>
+        </div>
+
+        <div class="reveal">
+            <h3>🍔 The Digestive System</h3>
+            
+            <p><strong>Nausea and Vomiting (Morning Sickness) 🤮</strong></p>
+            <p>This happens to 50% of women between weeks 4 and 6. It's caused by hormones (HCG, Estrogen, Progesterone). Even the smell of food can make her gag!</p>
+            <p><em>How to help:</em></p>
+            <ul>
+                <li>Eat dry toast or biscuits 🍪 immediately when waking up (wait 30 mins before breakfast).</li>
+                <li>Eat a carb snack at bedtime.</li>
+                <li>Salads 🥗 and light snacks are better than big heavy meals.</li>
+            </ul>
+
+            <p><strong>Heartburn 🔥</strong></p>
+            <p>This is a burning pain in the chest. It happens because progesterone relaxes the valve to the stomach, letting acid splash back up.</p>
+            <p><em>How to help:</em> Don't bend over! Avoid fried/fatty foods 🍟. Eat small meals. Doctors might give antacids.</p>
+
+            <p><strong>Excessive Salivation 🤤</strong></p>
+            <p>Yup, too much spit! Usually happens with heartburn around week 8.</p>
+
+            <p><strong>Pica 🧱</strong></p>
+            <p>This is weird but real—craving non-food items like coal or clay! We don't know why. If it's harmful, see a doctor immediately.</p>
+
+            <p><strong>Constipation 🚽</strong></p>
+            <p>Progesterone slows down the gut muscles (peristalsis), and the heavy uterus squashes the bowel.</p>
+            <p><em>How to help:</em> Drink lots of water 💧! Eat green veggies and fruits 🥦. A glass of warm water first thing in the morning wakes up the tummy.</p>
+        </div>
+
+        <div class="reveal">
+            <h3>🦴 Musculoskeletal (Bones & Muscles)</h3>
+
+            <p><strong>Backache 😫</strong></p>
+            <p>The baby adds weight, changing the center of gravity. This makes the lower back hollow out.</p>
+            <p><em>How to help:</em> Good posture! Use pillows to support the body when lying down.</p>
+
+            <p><strong>Cramps ⚡</strong></p>
+            <p>Sudden pain, usually in the legs at night. This might be from low calcium or Vitamin B1.</p>
+            <p><em>How to help:</em> Warm bath 🛁 before bed. Sleep with feet raised up slightly. If a cramp hits, gentle kneading helps.</p>
+        </div>
+
+        <div class="reveal">
+            <h3>🚽 Genito-urinary System</h3>
+
+            <p><strong>Frequent Micturition (Peeing a lot) 🏃‍♀️</strong></p>
+            <p>In the beginning, the uterus sits on the bladder. It gets better in the middle, but comes back at the end when the baby's head drops down.</p>
+
+            <p><strong>Leucorrhea</strong></p>
+            <p>Increased white discharge. It's normal! Just wash with plain water 🚿. Wear cotton underwear. If it itches, check for infection.</p>
+        </div>
+
+        <div class="reveal">
+            <h3>❤️ Circulatory System (Blood)</h3>
+
+            <p><strong>Fainting 😵</strong></p>
+            <p>Early on, blood vessels widen (vasodilation). Later, lying flat on the back is bad because the heavy baby presses on the big vein (vena cava) stopping blood flow to the heart. <span class="warning">Warning: Never let a pregnant woman lie flat on her back!</span> Turn her to her side to fix this quickly.</p>
+
+            <p><strong>Varicosities (Varicose Veins) 🦵</strong></p>
+            <p>Veins get lazy and stretch out. This can happen in legs or... well, the bottom (hemorrhoids).</p>
+            <p><em>How to help:</em> Exercise calf muscles. Rest with legs up against a wall 🧱. Eat fiber to avoid constipation.</p>
+
+            <p><strong>Edema (Swelling) 🦶</strong></p>
+            <p>Swollen feet from fluid buildup. Always check blood pressure to make sure it's not something serious like hypertension. Keep those feet up!</p>
+        </div>
+
+        <div class="reveal">
+            <h3>💆‍♀️ Skin & Nerves</h3>
+
+            <p><strong>Skin Itching</strong></p>
+            <p>Sometimes the belly itches due to liver response to hormones. It usually goes away after birth. Mild soap helps!</p>
+
+            <p><strong>Carpal Tunnel Syndrome ✋</strong></p>
+            <p>Pins and needles in fingers! Usually in the morning. Wearing a splint at night or raising the arm can help.</p>
+
+            <p><strong>Insomnia (Can't Sleep) 🦉</strong></p>
+            <p>The baby is kicking, she has to pee constantly, and she can't get comfy.</p>
+            <p><em>How to help:</em> Drink warm milk 🥛. Put a pillow under the tummy. Talk about fears to feel lighter.</p>
+        </div>
+
+        <!-- CONTINUOUS FLOW VIP SECTION -->
+        <div class="reveal vip-notice">
+            <p>That brings us to the end of our lecture on the changes in pregnancy! Before you go, I have something special for you.</p>
+            
+            <p>Join our <strong>VIP</strong> if you're yet to, for more study materials and other bonuses (worth #115,000)! 🎁</p>
+            
+            <p>For more details click below 👇</p>
+            
+            <a href="https://tinyurl.com/2dbtvx2b" target="_blank" class="vip-btn">Click Here</a>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // 1. SCROLL PROGRESS BAR LOGIC
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+
+        // 2. REVEAL ON SCROLL ANIMATION
+        // We use IntersectionObserver for better performance than scroll event listeners
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed to keep it visible
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // Target all elements with class 'reveal'
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+  </html>
